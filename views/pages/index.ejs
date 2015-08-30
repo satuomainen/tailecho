@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <span class="glyphicon glyphicon-bullhorn jumboicon"></span>
+    <h1>Tailecho notifier</h1>
+    <p>Wait for a thing to happen and get a visual notification when it does  </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+      <h3>Use case: Batch job monitor</h3>
+      <p>A windows workstation in another room. Running you an all important batch job. No idea when it's going to be done. No way to open a terminal to check, need to walk and see with eye. Awkward. Instead, get notified when the keyword you are looking for appears in the log. To achieve this, rig a notify command like so on the remote workstation:
+      <div>
+        <code>
+          $ tail -n 1 -f catalina.out | awk '/COMPLETED/ { system("curl http://example.com/tailecho/notify/batch123") }'
+        </code>
+      </div>
+      Then just open a browser window pointed to http://example.com/tailecho/monitor/batch123. When the word 'COMPLETED' appears in the log, your browser window starts to blink! It's like magic!
+    </p>
+  </div>
+  <div class="row">
+      <h3>Use case: A 'Thing' response</h3>
+      <p>
+        You make a button that can do HTTP POST, what to do with it? Well, you can make a browser window blink. Isn't it amazing?
+      </p>
+  </div>
+</div>
+
+</body>
+</html>

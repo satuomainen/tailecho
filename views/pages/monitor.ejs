@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+    <script>
+      var socket = io();
+      var keyword = '<%= keyword %>';
+      var colorCyclers = [];
+
+      var changeBackgroundColor = function() {
+        var color = Please.make_color();
+        $('body').css('background-color', color);
+      };
+
+      var startNotification = function() {
+        $('.notifybox').addClass('active');
+        $('.notifybox').removeClass('inactive');
+        colorCyclers.push(setInterval(changeBackgroundColor, 500));
+      };
+
+      var resetNotification = function() {
+        $('.notifybox').removeClass('active');
+        $('.notifybox').addClass('inactive');
+
+        colorCyclers.forEach(clearInterval);
+        colorCyclers = [];
+      };
+
+      $(document).ready(function() {
+        changeBackgroundColor();
+        socket.on(keyword, function (data) {
+          startNotification();
+        });
+        $('#stop-notifying').click(resetNotification);
+      });
+    </script>  
+  </head>
+  <body>
+    <div class="notifybox-container">
+      <div class="notifybox inactive">
+        <div class="notification active">
+          <h1>Event '<%= keyword %>' has occurred!</h1>
+          <div class="text-center">
+            <button id="stop-notifying" class="btn btn-primary btn-lg">OK, got it!</button>
+          </div >
+        </div>
+        <div class="notification inactive">
+          <h1>Waiting for '<%= keyword %>' to occur...</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

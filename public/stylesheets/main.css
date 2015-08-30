@@ -1,0 +1,44 @@
+.jumbotron {
+  background: #2F828C;
+  color: white;
+  padding-bottom: 80px; 
+}
+
+.jumbotron p {
+  color: #EDEBF1;
+  max-width: 75%;
+  margin: 1em auto 2em; 
+}
+
+.jumboicon:before {
+  font-size: 14em;
+}
+.notifybox-container {
+  min-height: 400px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notifybox {
+  background-color: #fff; 
+  padding: 20px 30px 30px 30px;
+  border: 2px solid #D4D1D1;
+  border-radius: 20px;
+  box-shadow: 0 3px 40px rgba(0, 0, 0, .6);
+}
+
+.notifybox.active .notification.active {
+  display: block;
+}
+.notifybox.active .notification.inactive {
+  display: none;
+}
+
+.notifybox.inactive .notification.active {
+  display: none;
+}
+.notifybox.inactive .notification.inactive {
+  display: block;
+}
