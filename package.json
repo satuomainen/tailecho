@@ -1,6 +1,6 @@
 {
   "name": "tailecho",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tailecho notifier",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "socket.io": "^1.3.6"
   },
   "engines": {
-    "node": "0.12.2"
+    "node": "7.10.1"
   },
   "repository": {
     "type": "git",
